@@ -1,0 +1,138 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-10-21 14:56:25.983210",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "output_item",
+  "batch_no",
+  "size_grade",
+  "output_qty",
+  "uom",
+  "conversion_factor",
+  "output_weight_kg",
+  "fg_category",
+  "sales_order",
+  "dm_cost",
+  "dl_cost",
+  "foh_cost",
+  "total_cost",
+  "reference_batch",
+  "reference_item",
+  "lhp_proses_detail"
+ ],
+ "fields": [
+  {
+   "fieldname": "output_item",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Output Item",
+   "options": "Item",
+   "reqd": 1
+  },
+  {
+   "fieldname": "batch_no",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Batch No",
+   "options": "Batch"
+  },
+  {
+   "fieldname": "size_grade",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Size Grade",
+   "options": "Size Grade Master"
+  },
+  {
+   "fieldname": "output_qty",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Output Qty",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "uom",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "UOM",
+   "options": "UOM"
+  },
+  {
+   "fieldname": "conversion_factor",
+   "fieldtype": "Float",
+   "label": "Conversion Factor"
+  },
+  {
+   "fieldname": "output_weight_kg",
+   "fieldtype": "Float",
+   "label": "Output Weight Kg"
+  },
+  {
+   "fieldname": "fg_category",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "FG Category",
+   "options": "Job\nNon-Job\nBroken\nMaklon"
+  },
+  {
+   "fieldname": "sales_order",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Sales Order",
+   "options": "Sales Order"
+  },
+  {
+   "fieldname": "dm_cost",
+   "fieldtype": "Currency",
+   "label": "DM Cost"
+  },
+  {
+   "fieldname": "dl_cost",
+   "fieldtype": "Currency",
+   "label": "DL Cost"
+  },
+  {
+   "fieldname": "foh_cost",
+   "fieldtype": "Currency",
+   "label": "FOH Cost"
+  },
+  {
+   "fieldname": "total_cost",
+   "fieldtype": "Currency",
+   "label": "Total Cost"
+  },
+  {
+   "fieldname": "reference_batch",
+   "fieldtype": "Link",
+   "label": "Reference Batch",
+   "options": "Batch"
+  },
+  {
+   "fieldname": "reference_item",
+   "fieldtype": "Link",
+   "label": "Reference Item",
+   "options": "Item"
+  },
+  {
+   "fieldname": "lhp_proses_detail",
+   "fieldtype": "Link",
+   "label": "LHP Proses Detail",
+   "options": "LHP Proses Detail"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-10-21 15:06:17.283563",
+ "modified_by": "Administrator",
+ "module": "Manufacture Seafood",
+ "name": "LHP Final Detail",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

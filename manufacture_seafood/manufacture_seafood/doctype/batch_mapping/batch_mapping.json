@@ -1,0 +1,87 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:BM-.#####",
+ "creation": "2025-10-21 09:37:48.563693",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "source_batch",
+  "target_batch",
+  "process_type",
+  "reference_doctype",
+  "reference_name",
+  "posting_date",
+  "remarks"
+ ],
+ "fields": [
+  {
+   "fieldname": "source_batch",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Source Batch",
+   "options": "Batch"
+  },
+  {
+   "fieldname": "target_batch",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Target Batch",
+   "options": "Batch"
+  },
+  {
+   "fieldname": "process_type",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Process Type",
+   "options": "Process Type"
+  },
+  {
+   "fieldname": "reference_doctype",
+   "fieldtype": "Link",
+   "label": "Reference Doctype",
+   "options": "DocType"
+  },
+  {
+   "fieldname": "reference_name",
+   "fieldtype": "Dynamic Link",
+   "label": "Reference Name",
+   "options": "reference_doctype"
+  },
+  {
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "label": "Posting Date"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-10-21 09:41:23.450813",
+ "modified_by": "Administrator",
+ "module": "Manufacture Seafood",
+ "name": "Batch Mapping",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -1,0 +1,149 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:LHP-.#####",
+ "creation": "2025-10-21 09:46:24.726286",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_ybyl",
+  "amended_from",
+  "posting_date",
+  "process_type",
+  "source_warehouse",
+  "target_warehouse",
+  "reference_batch",
+  "reference_item",
+  "column_break_vqep",
+  "input_qty",
+  "output_qty",
+  "yield_percent",
+  "new_batch",
+  "remarks",
+  "section_break_fodq",
+  "lhp_proses_detail"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_ybyl",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "LHP Proses",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "default": "Today",
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "label": "Posting Date"
+  },
+  {
+   "fieldname": "process_type",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Process Type",
+   "options": "Process Type",
+   "reqd": 1
+  },
+  {
+   "fieldname": "source_warehouse",
+   "fieldtype": "Link",
+   "label": "Source Warehouse",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "target_warehouse",
+   "fieldtype": "Link",
+   "label": "Target Warehouse",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "reference_batch",
+   "fieldtype": "Link",
+   "label": "Reference Batch",
+   "options": "Batch"
+  },
+  {
+   "fieldname": "reference_item",
+   "fieldtype": "Link",
+   "label": "Reference Item",
+   "options": "Item"
+  },
+  {
+   "fieldname": "column_break_vqep",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "input_qty",
+   "fieldtype": "Float",
+   "label": "Total Input Qty (kg)",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "output_qty",
+   "fieldtype": "Float",
+   "label": "Total Output Qty (kg)",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "yield_percent",
+   "fieldtype": "Float",
+   "label": "Yield (%)",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "new_batch",
+   "fieldtype": "Link",
+   "label": "New Batch",
+   "options": "Batch"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks"
+  },
+  {
+   "fieldname": "section_break_fodq",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "lhp_proses_detail",
+   "fieldtype": "Table",
+   "options": "LHP Proses Detail"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2025-10-21 14:20:09.534060",
+ "modified_by": "Administrator",
+ "module": "Manufacture Seafood",
+ "name": "LHP Proses",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

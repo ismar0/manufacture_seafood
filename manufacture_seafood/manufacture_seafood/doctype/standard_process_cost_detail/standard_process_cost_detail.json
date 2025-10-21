@@ -1,0 +1,57 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-10-21 11:19:45.590737",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "size_grade",
+  "dl_cost",
+  "foh_cost",
+  "yield_factor"
+ ],
+ "fields": [
+  {
+   "fieldname": "size_grade",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Size Grade",
+   "link_filters": "[[\"Size Grade Master\",\"is_group\",\"=\",1]]",
+   "options": "Size Grade Master"
+  },
+  {
+   "fieldname": "dl_cost",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "DL Cost",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "foh_cost",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "FOH Cost",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "yield_factor",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Yield",
+   "non_negative": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-10-21 13:09:37.359506",
+ "modified_by": "Administrator",
+ "module": "Manufacture Seafood",
+ "name": "Standard Process Cost Detail",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -1,0 +1,98 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:SPC-.#####",
+ "creation": "2025-10-21 13:09:51.633855",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "process_type",
+  "item_group",
+  "dl_cost",
+  "foh_cost",
+  "column_break_xvpy",
+  "uom",
+  "description",
+  "section_break_nzyn",
+  "table_dgnd"
+ ],
+ "fields": [
+  {
+   "fieldname": "process_type",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Process Type",
+   "options": "Process Type",
+   "reqd": 1
+  },
+  {
+   "fieldname": "item_group",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Item Group",
+   "options": "Item Group",
+   "reqd": 1
+  },
+  {
+   "fieldname": "dl_cost",
+   "fieldtype": "Currency",
+   "label": "DL Cost",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "foh_cost",
+   "fieldtype": "Currency",
+   "label": "FOH Cost",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "column_break_xvpy",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "uom",
+   "fieldtype": "Link",
+   "label": "UOM",
+   "options": "UOM"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description"
+  },
+  {
+   "fieldname": "section_break_nzyn",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "table_dgnd",
+   "fieldtype": "Table",
+   "options": "Standard Process Cost Detail"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-10-21 13:13:30.077912",
+ "modified_by": "Administrator",
+ "module": "Manufacture Seafood",
+ "name": "Standard Process Cost",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

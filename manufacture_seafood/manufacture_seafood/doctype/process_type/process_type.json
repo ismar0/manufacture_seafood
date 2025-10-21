@@ -1,0 +1,94 @@
+{
+ "actions": [],
+ "autoname": "field:process_code",
+ "creation": "2025-10-21 09:33:30.173551",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "process_code",
+  "process_name",
+  "default_in_warehouse",
+  "default_out_warehouse",
+  "column_break_uzhy",
+  "default_yield_",
+  "cost_center",
+  "remarks"
+ ],
+ "fields": [
+  {
+   "fieldname": "process_code",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Process Code",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "process_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Process Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "default_in_warehouse",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Default In Warehouse",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "default_out_warehouse",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Default Out Warehouse",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "default_yield_",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Default Yield (%)"
+  },
+  {
+   "fieldname": "cost_center",
+   "fieldtype": "Link",
+   "label": "Cost Center",
+   "options": "Cost Center"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks"
+  },
+  {
+   "fieldname": "column_break_uzhy",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-10-21 09:36:46.594619",
+ "modified_by": "Administrator",
+ "module": "Manufacture Seafood",
+ "name": "Process Type",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

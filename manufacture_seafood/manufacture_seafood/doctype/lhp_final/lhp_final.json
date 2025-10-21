@@ -1,0 +1,134 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:LHPF-.#####",
+ "creation": "2025-10-21 15:06:40.456403",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_mbf7",
+  "amended_from",
+  "posting_date",
+  "lhp_proses_reference",
+  "total_output_qty",
+  "total_output_weight_kg",
+  "column_break_cfwq",
+  "remarks",
+  "column_break_dyha",
+  "total_dm_cost",
+  "total_dl_cost",
+  "total_foh_cost",
+  "total_cost",
+  "section_break_wgqo",
+  "lhp_final_detail"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_mbf7",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "LHP Final",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "default": "Today",
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Posting Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "lhp_proses_reference",
+   "fieldtype": "Link",
+   "label": "LHP Proses Reference",
+   "options": "LHP Proses"
+  },
+  {
+   "fieldname": "total_output_qty",
+   "fieldtype": "Float",
+   "label": "Total Output Qty"
+  },
+  {
+   "fieldname": "total_output_weight_kg",
+   "fieldtype": "Float",
+   "label": "Total Output Weight Kg"
+  },
+  {
+   "fieldname": "column_break_dyha",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_dm_cost",
+   "fieldtype": "Currency",
+   "label": "Total DM Cost"
+  },
+  {
+   "fieldname": "total_dl_cost",
+   "fieldtype": "Currency",
+   "label": "Total DL Cost"
+  },
+  {
+   "fieldname": "total_foh_cost",
+   "fieldtype": "Currency",
+   "label": "Total FOH Cost"
+  },
+  {
+   "fieldname": "total_cost",
+   "fieldtype": "Currency",
+   "label": "Total Cost"
+  },
+  {
+   "fieldname": "column_break_cfwq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks"
+  },
+  {
+   "fieldname": "section_break_wgqo",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "lhp_final_detail",
+   "fieldtype": "Table",
+   "options": "LHP Final Detail"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2025-10-21 15:11:58.405700",
+ "modified_by": "Administrator",
+ "module": "Manufacture Seafood",
+ "name": "LHP Final",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
