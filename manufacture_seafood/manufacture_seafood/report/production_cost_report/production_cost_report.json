@@ -1,0 +1,67 @@
+{
+ "add_total_row": 0,
+ "columns": [],
+ "creation": "2025-10-21 17:28:20.249622",
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [
+  {
+   "fieldname": "from_date",
+   "fieldtype": "Date",
+   "label": "From Date",
+   "mandatory": 0,
+   "wildcard_filter": 0
+  },
+  {
+   "fieldname": "to_date",
+   "fieldtype": "Date",
+   "label": "To Date",
+   "mandatory": 0,
+   "wildcard_filter": 0
+  },
+  {
+   "fieldname": "process_type",
+   "fieldtype": "Link",
+   "label": "Process Type",
+   "mandatory": 0,
+   "options": "Process Type",
+   "wildcard_filter": 0
+  },
+  {
+   "fieldname": "batch_no",
+   "fieldtype": "Link",
+   "label": "Batch No",
+   "mandatory": 0,
+   "options": "Batch",
+   "wildcard_filter": 0
+  },
+  {
+   "fieldname": "item",
+   "fieldtype": "Link",
+   "label": "Item",
+   "mandatory": 0,
+   "options": "Item",
+   "wildcard_filter": 0
+  }
+ ],
+ "idx": 0,
+ "is_standard": "Yes",
+ "letterhead": null,
+ "modified": "2025-10-21 17:46:54.861417",
+ "modified_by": "Administrator",
+ "module": "Manufacture Seafood",
+ "name": "Production Cost Report",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "query": "SELECT\r\n    lp.name AS \"LHP No:Link/LHP Proses:150\",\r\n    lp.posting_date AS \"Tanggal Produksi:Date:100\",\r\n    lp.process_type AS \"Process Type:Link/Process Type:150\",\r\n    lp.reference_batch AS \"Batch Asal:Link/Batch:150\",\r\n    lp.source_warehouse AS \"Gudang Asal:Link/Warehouse:150\",\r\n    lp.target_warehouse AS \"Gudang Tujuan:Link/Warehouse:150\",\r\n    lpd.output_item AS \"Item Hasil:Link/Item:150\",\r\n    lpd.output_qty AS \"Qty Output:Float:100\",\r\n    lpd.group_size AS \"Group Size:Link/Size Group:100\",\r\n    lpd.single_size AS \"Single Size:Link/Size Single:100\",\r\n    spc.direct_labour_cost AS \"DL Std (Rp/kg):Currency:120\",\r\n    spc.factory_overhead_cost AS \"FOH Std (Rp/kg):Currency:120\",\r\n    IFNULL(spc.direct_labour_cost, 0) * lpd.output_qty AS \"Total DL (Rp):Currency:120\",\r\n    IFNULL(spc.factory_overhead_cost, 0) * lpd.output_qty AS \"Total FOH (Rp):Currency:120\",\r\n    (\r\n        SELECT valuation_rate * qty\r\n        FROM `tabStock Ledger Entry`\r\n        WHERE batch_no = lp.reference_batch\r\n        ORDER BY posting_date DESC\r\n        LIMIT 1\r\n    ) AS \"DM (Rp):Currency:120\",\r\n    (\r\n        IFNULL(spc.direct_labour_cost, 0) +\r\n        IFNULL(spc.factory_overhead_cost, 0) +\r\n        (\r\n            SELECT valuation_rate\r\n            FROM `tabStock Ledger Entry`\r\n            WHERE batch_no = lp.reference_batch\r\n            ORDER BY posting_date DESC\r\n            LIMIT 1\r\n        )\r\n    ) AS \"Total Cost / Kg (Rp):Currency:120\",\r\n    (lpd.output_qty * (\r\n        IFNULL(spc.direct_labour_cost, 0) +\r\n        IFNULL(spc.factory_overhead_cost, 0) +\r\n        (\r\n            SELECT valuation_rate\r\n            FROM `tabStock Ledger Entry`\r\n            WHERE batch_no = lp.reference_batch\r\n            ORDER BY posting_date DESC\r\n            LIMIT 1\r\n        )\r\n    )) AS \"Total Cost Output (Rp):Currency:150\",\r\n    lp.yield_percent AS \"Yield (%%):Percent:80\"\r\nFROM `tabLHP Proses` lp\r\nLEFT JOIN `tabLHP Proses Detail` lpd ON lpd.parent = lp.name\r\nLEFT JOIN `tabStandard Process Cost` spc ON spc.process_type = lp.process_type\r\nWHERE 1=1\r\n    AND (%(from_date)s IS NULL OR %(from_date)s = '' OR lp.posting_date >= %(from_date)s)\r\n    AND (%(to_date)s IS NULL OR %(to_date)s = '' OR lp.posting_date <= %(to_date)s)\r\n    AND (%(process_type)s IS NULL OR %(process_type)s = '' OR lp.process_type = %(process_type)s)\r\n    AND (%(batch_no)s IS NULL OR %(batch_no)s = '' OR lp.batch_no = %(batch_no)s)\r\n    AND (%(item)s IS NULL OR %(item)s = '' OR lpd.item = %(item)s)\r\nORDER BY lp.posting_date DESC, lp.name DESC\r\n",
+ "ref_doctype": "LHP Proses",
+ "report_name": "Production Cost Report",
+ "report_type": "Query Report",
+ "roles": [
+  {
+   "role": "System Manager"
+  }
+ ],
+ "timeout": 0
+}

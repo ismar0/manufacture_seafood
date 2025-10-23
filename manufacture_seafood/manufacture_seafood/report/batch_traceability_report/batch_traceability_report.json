@@ -1,0 +1,51 @@
+{
+ "add_total_row": 0,
+ "columns": [],
+ "creation": "2025-10-21 17:24:21.287398",
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [
+  {
+   "fieldname": "batch_no",
+   "fieldtype": "Link",
+   "label": "Batch No",
+   "mandatory": 1,
+   "options": "Batch",
+   "wildcard_filter": 0
+  },
+  {
+   "fieldname": "from_date",
+   "fieldtype": "Date",
+   "label": "From Date",
+   "mandatory": 0,
+   "wildcard_filter": 0
+  },
+  {
+   "fieldname": "to_date",
+   "fieldtype": "Date",
+   "label": "To Date",
+   "mandatory": 0,
+   "wildcard_filter": 0
+  }
+ ],
+ "idx": 0,
+ "is_standard": "Yes",
+ "letterhead": null,
+ "modified": "2025-10-21 17:24:21.287398",
+ "modified_by": "Administrator",
+ "module": "Manufacture Seafood",
+ "name": "Batch Traceability Report",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "query": "SELECT\r\n    data.source_batch AS \"Source Batch:Link/Batch:150\",\r\n    data.target_batch AS \"Target Batch:Link/Batch:150\",\r\n    data.process_type AS \"Process Type:Link/Process Type:150\",\r\n    data.reference_doctype AS \"Reference Doctype::150\",\r\n    data.reference_name AS \"Reference Name:Dynamic Link:150\",\r\n    data.posting_date AS \"Posting Date:Date:100\",\r\n    data.source_item AS \"Source Item:Link/Item:150\",\r\n    data.target_item AS \"Target Item:Link/Item:150\",\r\n    data.qty AS \"Qty:Float:100\",\r\n    data.party AS \"Party:Data:150\",\r\n    data.flow_type AS \"Flow Type:Data:120\"\r\nFROM (\r\n    -- 1\ufe0f\u20e3 Purchase Receipt\r\n    SELECT\r\n        pri.batch_no AS source_batch,\r\n        NULL AS target_batch,\r\n        NULL AS process_type,\r\n        'Purchase Receipt' AS reference_doctype,\r\n        pr.name AS reference_name,\r\n        pr.posting_date,\r\n        NULL AS source_item,\r\n        pri.item_code AS target_item,\r\n        pri.qty,\r\n        pr.supplier AS party,\r\n        'Purchase' AS flow_type\r\n    FROM `tabPurchase Receipt` pr\r\n    JOIN `tabPurchase Receipt Item` pri ON pr.name = pri.parent\r\n    WHERE pr.docstatus = 1\r\n\r\n    UNION ALL\r\n\r\n    -- 2\ufe0f\u20e3 Batch Mapping (LHP Proses)\r\n    SELECT\r\n        bm.source_batch,\r\n        bm.target_batch,\r\n        bm.process_type,\r\n        bm.reference_doctype,\r\n        bm.reference_name,\r\n        bm.posting_date,\r\n        lp.reference_item AS source_item,\r\n        lpd.output_item AS target_item,\r\n        lpd.output_qty AS qty,\r\n        NULL AS party,\r\n        'Process' AS flow_type\r\n    FROM `tabBatch Mapping` bm\r\n    LEFT JOIN `tabLHP Proses` lp ON lp.name = bm.reference_name\r\n    LEFT JOIN `tabLHP Proses Detail` lpd ON lpd.parent = lp.name\r\n\r\n    UNION ALL\r\n\r\n    -- 3\ufe0f\u20e3 LHP Final\r\n    SELECT\r\n        lf.reference_batch AS source_batch,\r\n        lf.new_batch AS target_batch,\r\n        lf.process_type,\r\n        'LHP Final' AS reference_doctype,\r\n        lf.name AS reference_name,\r\n        lf.posting_date,\r\n        lf.reference_item AS source_item,\r\n        lfd.output_item AS target_item,\r\n        lfd.output_qty AS qty,\r\n        NULL AS party,\r\n        'Finish' AS flow_type\r\n    FROM `tabLHP Final` lf\r\n    LEFT JOIN `tabLHP Final Detail` lfd ON lf.name = lfd.parent\r\n\r\n    UNION ALL\r\n\r\n    -- 4\ufe0f\u20e3 Delivery Note\r\n    SELECT\r\n        dni.batch_no AS source_batch,\r\n        NULL AS target_batch,\r\n        NULL AS process_type,\r\n        'Delivery Note' AS reference_doctype,\r\n        dn.name AS reference_name,\r\n        dn.posting_date,\r\n        dni.item_code AS source_item,\r\n        NULL AS target_item,\r\n        dni.qty,\r\n        dn.customer AS party,\r\n        'Sales' AS flow_type\r\n    FROM `tabDelivery Note` dn\r\n    JOIN `tabDelivery Note Item` dni ON dn.name = dni.parent\r\n    WHERE dn.docstatus = 1\r\n) AS data\r\nWHERE\r\n    ( %(batch_no)s IS NULL\r\n      OR data.source_batch = %(batch_no)s\r\n      OR data.target_batch = %(batch_no)s )\r\n    AND ( %(from_date)s IS NULL OR data.posting_date >= %(from_date)s )\r\n    AND ( %(to_date)s IS NULL OR data.posting_date <= %(to_date)s )\r\nORDER BY data.posting_date;\r\n",
+ "ref_doctype": "Batch Mapping",
+ "report_name": "Batch Traceability Report",
+ "report_type": "Query Report",
+ "roles": [
+  {
+   "role": "System Manager"
+  }
+ ],
+ "timeout": 0
+}
